@@ -1,0 +1,82 @@
+# Prefer this callable entrypoint from utility repos (workflow_call).
+name: Release fan-out (callable)
+
+on:
+  workflow_call:
+    inputs:
+      source_repo:
+        required: true
+        type: string
+      tag:
+        required: true
+        type: string
+      release_url:
+        required: false
+        type: string
+        default: ""
+      asset_url:
+        required: false
+        type: string
+        default: ""
+      asset_name:
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  fanout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Update catalog entry
+        env:
+          SOURCE_REPO: ${{ inputs.source_repo }}
+          TAG: ${{ inputs.tag }}
+          RELEASE_URL: ${{ inputs.release_url }}
+          ASSET_URL: ${{ inputs.asset_url }}
+          ASSET_NAME: ${{ inputs.asset_name }}
+        run: node scripts/update-product-from-release.mjs
+
+      - name: Branch name
+        id: branch
+        run: |
+          SLUG="${{ inputs.source_repo }}"
+          SLUG="${SLUG##*/}"
+          TAG="${{ inputs.tag }}"
+          BRANCH="fanout/${SLUG}-${TAG}"
+          echo "name=${BRANCH//[^a-zA-Z0-9._\/-]//-}" >> "$GITHUB_OUTPUT"
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+
+      - name: Create pull request (do not merge)
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(catalog): ${{ steps.branch.outputs.slug }} ${{ inputs.tag }}"
+          branch: ${{ steps.branch.outputs.name }}
+          title: "Fan-out: ${{ steps.branch.outputs.slug }} ${{ inputs.tag }}"
+          body: |
+            ## Release fan-out (PR only — do not auto-merge)
+
+            - **Source:** `${{ inputs.source_repo }}`
+            - **Tag:** `${{ inputs.tag }}`
+            - **Release:** ${{ inputs.release_url }}
+            - **Asset:** `${{ inputs.asset_name }}`
+            - **Download:** ${{ inputs.asset_url }}
+
+            ### Checklist (stubs)
+            - [ ] Refresh docs if needed
+            - [ ] Capture / replace screencaps under `public/screenshots/`
+            - [ ] Confirm pitch
+            - [ ] YouTube stub empty unless real video exists
+            - [ ] **Human review before merge**
+
+            Hard no: directory automation; private repos; fake counts.
+          delete-branch: true
