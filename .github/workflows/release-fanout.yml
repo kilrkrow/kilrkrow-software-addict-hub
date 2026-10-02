@@ -1,0 +1,103 @@
+# Manual / repository_dispatch entrypoint for release fan-out.
+# Prefer release-fanout-callable.yml from utility repos (workflow_call).
+name: Release fan-out
+
+on:
+  repository_dispatch:
+    types: [kilrkrow-release-fanout]
+  workflow_dispatch:
+    inputs:
+      source_repo:
+        description: "owner/name of the utility"
+        required: true
+        type: string
+      tag:
+        description: "Release tag (e.g. v0.1.0)"
+        required: true
+        type: string
+      release_url:
+        required: false
+        type: string
+        default: ""
+      asset_url:
+        required: false
+        type: string
+        default: ""
+      asset_name:
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve inputs
+        id: meta
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const payload = context.payload.client_payload || {};
+            const inputs = context.payload.inputs || {};
+            const source_repo = inputs.source_repo || payload.source_repo || '';
+            const tag = inputs.tag || payload.tag || '';
+            const release_url = inputs.release_url || payload.release_url || '';
+            const asset_url = inputs.asset_url || payload.asset_url || '';
+            const asset_name = inputs.asset_name || payload.asset_name || '';
+            if (!source_repo || !tag) {
+              core.setFailed('source_repo and tag are required');
+              return;
+            }
+            const slug = source_repo.split('/')[1] || source_repo;
+            const branch = `fanout/${slug}-${tag}`.replace(/[^a-zA-Z0-9._\/-]+/g, '-');
+            core.setOutput('source_repo', source_repo);
+            core.setOutput('tag', tag);
+            core.setOutput('release_url', release_url);
+            core.setOutput('asset_url', asset_url);
+            core.setOutput('asset_name', asset_name);
+            core.setOutput('slug', slug);
+            core.setOutput('branch', branch);
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Update catalog entry
+        env:
+          SOURCE_REPO: ${{ steps.meta.outputs.source_repo }}
+          TAG: ${{ steps.meta.outputs.tag }}
+          RELEASE_URL: ${{ steps.meta.outputs.release_url }}
+          ASSET_URL: ${{ steps.meta.outputs.asset_url }}
+          ASSET_NAME: ${{ steps.meta.outputs.asset_name }}
+        run: node scripts/update-product-from-release.mjs
+
+      - name: Create pull request (do not merge)
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(catalog): ${{ steps.meta.outputs.slug }} ${{ steps.meta.outputs.tag }}"
+          branch: ${{ steps.meta.outputs.branch }}
+          title: "Fan-out: ${{ steps.meta.outputs.slug }} ${{ steps.meta.outputs.tag }}"
+          body: |
+            ## Release fan-out (PR only — do not auto-merge)
+
+            - **Source:** `${{ steps.meta.outputs.source_repo }}`
+            - **Tag:** `${{ steps.meta.outputs.tag }}`
+            - **Release:** ${{ steps.meta.outputs.release_url }}
+            - **Asset:** `${{ steps.meta.outputs.asset_name }}`
+            - **Download:** ${{ steps.meta.outputs.asset_url }}
+
+            ### Checklist (stubs)
+            - [ ] Refresh docs if the release notes warrant it
+            - [ ] Capture / replace screencaps under `public/screenshots/` (Windows ship bar)
+            - [ ] Confirm pitch still matches the product
+            - [ ] YouTube stub still empty unless a real video exists
+            - [ ] **Human review before merge**
+
+            Hard no: Softpedia / SnapFiles / WebAttack automation; private repos; fake download counts.
+          delete-branch: true

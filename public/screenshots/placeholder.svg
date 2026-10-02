@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#ebe7df"/>
+  <rect x="48" y="48" width="864" height="444" rx="8" fill="#f7f4ee" stroke="#d4cfc4" stroke-width="2"/>
+  <text x="480" y="270" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#8a8478">Screenshot placeholder</text>
+  <text x="480" y="304" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#a39e93">Replace on release fan-out</text>
+</svg>
