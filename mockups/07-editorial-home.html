@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><title>07 Editorial Home</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:#fcfaf7;color:#1e1e1e}
+.mast{display:flex;justify-content:space-between;padding:1rem 2.5rem;border-bottom:2px solid #1e1e1e;font-family:Montserrat,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.08em}
+.mast .c{font-weight:500;color:#8c8c8c}
+.hero{padding:1.5rem 2.5rem 2rem;display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:end}
+.hero h1{font-family:'Crimson Pro',Georgia,serif;font-size:3.5rem;font-weight:600;line-height:1.05}
+.hero p{color:#505050;font-size:.95rem;line-height:1.5}
+.content{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;padding:0 2.5rem 2.5rem}
+.feature{background:#1e1e1e;color:#fcfaf7;padding:2.5rem;min-height:420px;display:flex;flex-direction:column}
+.feature .lab{color:#c8b478;font-family:Montserrat,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em}
+.feature h2{font-family:'Crimson Pro',Georgia,serif;font-size:2.6rem;margin:1rem 0}
+.feature p{color:#c8c8c8;line-height:1.55;flex:1}
+.feature .meta{color:#c8b478;margin:1rem 0}
+.feature .btn{display:inline-block;background:#fcfaf7;color:#1e1e1e;padding:.55rem 1.1rem;text-decoration:none;font-weight:600;font-size:.9rem;width:fit-content}
+.list article{padding:1.1rem 0;border-top:1px solid #dcdad6}
+.list .cat{color:#a08c64;font-family:Montserrat,sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.08em}
+.list h3{font-family:'Crimson Pro',Georgia,serif;font-size:1.45rem;margin:.25rem 0}
+.list p{color:#5a5a5a;font-size:.9rem}.list .m{color:#787878;font-size:.8rem;margin-top:.35rem}
+</style></head><body>
+<div class="mast"><span>KILRKROW</span><span class="c">ISSUE 01</span><span>WINDOWS</span></div>
+<div class="hero"><h1>The Software<br/>Addict</h1>
+<p>A magazine-style index of small Windows utilities from kilrkrow — honest ZIPs, no affiliate sludge.</p></div>
+<div class="content">
+<section class="feature">
+<div class="lab">FEATURED</div>
+<h2>VoltDesk</h2>
+<p>Desk power &amp; USB hub status at a glance. The quiet hero of the charging cable jungle.</p>
+<div class="meta">v0.2.3 · Hardware</div>
+<a class="btn" href="08-editorial-product-voltdesk.html">Read more</a>
+</section>
+<section class="list" id="list"></section>
+</div>
+<script>
+const PRODUCTS = [
+  {name:"Audio Mixer", pitch:"Quick volume control for Windows", ver:"v0.1.1", cat:"Utilities", asset:"AudioMixer-win-x64-v0.1.1.zip", size:"70.8 MB", slug:"audio-mixer"},
+  {name:"Sideclip", pitch:"Tray clipboard beside Win+V with secret TTL", ver:"v0.1.0", cat:"Clipboard", asset:"Sideclip-win-x64-v0.1.0.zip", size:"66.7 MB", slug:"sideclip"},
+  {name:"VoltDesk", pitch:"Desk power & USB hub status at a glance", ver:"v0.2.3", cat:"Hardware", asset:"VoltDesk-win-x64-v0.2.3.zip", size:"41.2 MB", slug:"voltdesk"},
+  {name:"NetPulse", pitch:"Ping, traceroute, and domain dossier", ver:"v0.1.0", cat:"Network", asset:"NetPulse-win-x64-v0.1.0.zip", size:"64.2 MB", slug:"netpulse"},
+  {name:"Win Service Buddy", pitch:"Manage product-scoped Windows services", ver:"v0.2.0", cat:"Admin", asset:"wsbuddy-app-win-x64-v0.2.0.zip", size:"42.3 MB", slug:"win-service-buddy"},
+];
+
+PRODUCTS.filter(p=>p.name!=='VoltDesk').forEach(p=>{
+document.getElementById('list').innerHTML+=`<article><div class="cat">${p.cat.toUpperCase()}</div><h3>${p.name}</h3><p>${p.pitch}</p><div class="m">${p.ver} · ${p.size}</div></article>`;
+});
+</script></body></html>

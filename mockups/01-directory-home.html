@@ -1,1 +1,49 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><title>01 Directory Home</title></head><body><p>See Dropbox mockups-2026-10-01 for full HTML+PNG. Placeholder stub.</p></body></html>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><title>01 Directory Home</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,Segoe UI,system-ui,sans-serif;background:#f8f9fb;color:#1e2832}
+.top{background:#1c3c78;color:#fff;display:flex;align-items:center;gap:1.5rem;padding:.9rem 1.25rem}
+.top h1{font-size:1.15rem;letter-spacing:.04em}
+.top .tag{opacity:.75;font-size:.85rem}
+.search{margin-left:auto;background:#fff;color:#8a949e;padding:.45rem .8rem;border-radius:4px;min-width:240px;font-size:.85rem}
+.wrap{display:grid;grid-template-columns:220px 1fr;gap:1rem;padding:1rem}
+.side{background:#fff;border:1px solid #dce0e6;padding:1rem}
+.side h2{font-size:.7rem;color:#646e78;letter-spacing:.08em;margin-bottom:.75rem}
+.side a{display:flex;justify-content:space-between;padding:.45rem .5rem;text-decoration:none;color:#32373d;border-radius:4px;font-size:.9rem}
+.side a.on{background:#e8f0ff;color:#1c3c78;font-weight:600}
+table{width:100%;border-collapse:collapse;background:#fff}
+th{background:#eceff4;text-align:left;padding:.55rem .75rem;font-size:.75rem;color:#5a646e}
+td{padding:.75rem;border-bottom:1px solid #e6eaee;vertical-align:middle;font-size:.9rem}
+.icon{width:40px;height:40px;background:#1c3c78;color:#fff;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-right:.6rem}
+.name{font-weight:650;color:#192850}
+.pitch{color:#6e7680;font-size:.8rem}
+.btn{background:#2ea043;color:#fff;border:0;padding:.5rem .9rem;border-radius:4px;font-weight:700;cursor:pointer}
+footer{padding:1rem 1.25rem;color:#8c949e;font-size:.8rem}
+</style></head><body>
+<header class="top"><h1>kilrkrow DIRECTORY</h1><span class="tag">Windows utilities · tasteful downloads · no junk</span><div class="search">Search utilities…</div></header>
+<div class="wrap">
+<aside class="side"><h2>CATEGORIES</h2>
+<a class="on" href="#">All utilities <span>5</span></a>
+<a href="#">Clipboard <span>1</span></a><a href="#">Network <span>1</span></a>
+<a href="#">Audio <span>1</span></a><a href="#">Hardware <span>1</span></a>
+<a href="#">Admin <span>1</span></a><a href="#">Recently updated <span>3</span></a>
+</aside>
+<main>
+<h2 style="margin-bottom:.75rem;font-size:1.05rem">Browse all · 5 releases</h2>
+<table><thead><tr><th>Name</th><th>Category</th><th>Version</th><th>Asset</th><th></th></tr></thead>
+<tbody id="tb"></tbody></table>
+</main></div>
+<footer>Public GitHub Releases only · No fake counters · No adware mirrors</footer>
+<script>
+const PRODUCTS = [
+  {name:"Audio Mixer", pitch:"Quick volume control for Windows", ver:"v0.1.1", cat:"Utilities", asset:"AudioMixer-win-x64-v0.1.1.zip", size:"70.8 MB", slug:"audio-mixer"},
+  {name:"Sideclip", pitch:"Tray clipboard beside Win+V with secret TTL", ver:"v0.1.0", cat:"Clipboard", asset:"Sideclip-win-x64-v0.1.0.zip", size:"66.7 MB", slug:"sideclip"},
+  {name:"VoltDesk", pitch:"Desk power & USB hub status at a glance", ver:"v0.2.3", cat:"Hardware", asset:"VoltDesk-win-x64-v0.2.3.zip", size:"41.2 MB", slug:"voltdesk"},
+  {name:"NetPulse", pitch:"Ping, traceroute, and domain dossier", ver:"v0.1.0", cat:"Network", asset:"NetPulse-win-x64-v0.1.0.zip", size:"64.2 MB", slug:"netpulse"},
+  {name:"Win Service Buddy", pitch:"Manage product-scoped Windows services", ver:"v0.2.0", cat:"Admin", asset:"wsbuddy-app-win-x64-v0.2.0.zip", size:"42.3 MB", slug:"win-service-buddy"},
+];
+
+const tb=document.getElementById('tb');
+PRODUCTS.forEach(p=>{tb.innerHTML+=`<tr><td><span class="icon">${p.name[0]}</span><div style="display:inline-block"><div class="name">${p.name}</div><div class="pitch">${p.pitch}</div></div></td><td>${p.cat}</td><td><b>${p.ver}</b></td><td><div>${p.asset}</div><div class="pitch">${p.size}</div></td><td><button class="btn">Download</button></td></tr>`});
+</script></body></html>

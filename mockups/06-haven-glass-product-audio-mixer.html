@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><title>06 Haven Glass · Audio Mixer</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Outfit,Inter,system-ui,sans-serif;background:radial-gradient(ellipse at 80% 40%,#1a1430 0%,#080c16 55%);color:#f0f8ff;min-height:100vh}
+nav{margin:1rem 1.5rem;padding:1rem 1.5rem;background:rgba(18,24,40,.85);border:1px solid #3c5078;border-radius:16px;display:flex;gap:1rem;align-items:center}
+.logo{color:#22d3ee;font-weight:600}.crumb{color:#a0b4c8;font-size:.9rem}
+.wrap{display:grid;grid-template-columns:1.6fr 1fr;gap:1.5rem;padding:1rem 2rem 2rem}
+.glass{background:rgba(14,20,36,.92);border:1px solid #374b73;border-radius:20px;padding:2rem}
+.side{border-color:#a78bfa}
+.kicker{color:#22d3ee;font-size:.75rem;font-weight:700;letter-spacing:.1em}
+h1{font-size:2.5rem;font-weight:650;margin:.5rem 0 1rem}p{color:#a0b4cd;line-height:1.5;margin-bottom:.5rem}
+.viz{margin:1.5rem 0;height:200px;background:#0a0e1a;border:1px solid #283c64;border-radius:12px;display:flex;align-items:flex-end;justify-content:center;gap:12px;padding:1.5rem}
+.bar{width:28px;border-radius:4px 4px 0 0}.bar:nth-child(odd){background:#22d3ee}.bar:nth-child(even){background:#a78bfa}
+.meta{color:#8ca0be;font-family:IBM Plex Sans,monospace;font-size:.9rem;margin-top:1rem}
+.btn{display:block;width:100%;padding:1rem;border-radius:12px;font-weight:700;border:0;margin-bottom:.75rem;cursor:pointer;font-size:1rem}
+.btn.p{background:#22d3ee;color:#080c16}.btn.s{background:transparent;color:#22d3ee;border:1px solid #22d3ee}
+.kv{margin:1.25rem 0}.kv .k{color:#7890a5;font-size:.8rem}.kv .v{font-weight:600;margin-bottom:.85rem}
+</style></head><body>
+<nav><div class="logo">kilrkrow</div><div class="crumb">‹ Catalog / Audio Mixer</div></nav>
+<div class="wrap">
+<section class="glass">
+<div class="kicker">AUDIO</div>
+<h1>Audio Mixer</h1>
+<p>A small Windows mixer for quick volume control.</p>
+<p>Neon meters optional. Honest ZIP from GitHub Releases.</p>
+<div class="viz" id="viz"></div>
+<div class="meta">v0.1.1 · 70.8 MB · AudioMixer-win-x64-v0.1.1.zip</div>
+</section>
+<aside class="glass side">
+<h2 style="margin-bottom:1.25rem">Get the build</h2>
+<button class="btn p">Download ZIP</button>
+<button class="btn s">GitHub release</button>
+<div class="kv">
+<div class="k">License</div><div class="v">MIT</div>
+<div class="k">Platform</div><div class="v">Windows x64</div>
+<div class="k">Publisher</div><div class="v">kilrkrow</div>
+<div class="k">Repo</div><div class="v">kilrkrow/audio-mixer</div>
+</div>
+</aside></div>
+<script>
+const v=document.getElementById('viz');
+[50,90,70,140,110,160,80,130,100,150,60,120].forEach(h=>{const b=document.createElement('div');b.className='bar';b.style.height=h+'px';v.appendChild(b)});
+</script></body></html>
