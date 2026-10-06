@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Killercrow tools</title>
+  <meta name="description" content="Browse and install kilrkrow Windows utilities — spoken killercrow." />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">kilrkrow · killercrow</p>
+    <h1>Hey friend — check out these tools</h1>
+    <p class="lede">Small Windows utilities I built. Browse what each one does, download a build, or check the boxes and install the set onto a fresh machine in one go.</p>
+    <p class="hint">Install path is Chris Titus–style: run elevated, pick what you want, press one button. Backed by winget or Chocolatey when a package exists; otherwise the latest GitHub Release asset.</p>
+  </header>
+
+  <section class="panel" id="fresh-box">
+    <h2>Fresh machine — get the banana</h2>
+    <p>Check the tools you want, then install. Prefer running PowerShell <strong>as Administrator</strong>.</p>
+    <div class="bulk-actions">
+      <button type="button" id="select-all" class="ghost">Select all</button>
+      <button type="button" id="select-none" class="ghost">Clear</button>
+      <button type="button" id="install-selected" class="primary">Install selected</button>
+    </div>
+    <p class="hint" id="install-hint">Copies a one-shot elevated script and opens instructions. Nothing runs in your browser.</p>
+    <pre id="script-preview" class="script" hidden></pre>
+    <div class="row-actions" id="script-actions" hidden>
+      <button type="button" id="copy-script" class="primary">Copy install script</button>
+      <a id="download-script" class="ghost" download="killercrow-install.ps1" href="#">Download .ps1</a>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Tools</h2>
+    <div id="tool-grid" class="grid"></div>
+  </section>
+
+  <footer class="footer">
+    <p>GitHub: <a href="https://github.com/kilrkrow">kilrkrow</a> · Hub source: <a href="https://github.com/kilrkrow/kilrkrow-software-addict-hub">kilrkrow-software-addict-hub</a></p>
+    <p class="muted">Demo clips of each app are a separate later task. Domain candidates: killercrow.io / killercrow.dev.</p>
+  </footer>
+
+  <script src="js/catalog.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
