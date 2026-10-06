@@ -1,5 +1,5 @@
-﻿(function () {
-  const catalog = window.KILLERCROW_CATALOG || [];
+(function () {
+  const catalog = window.KILRKROW_CATALOG || [];
   const grid = document.getElementById("tool-grid");
   const preview = document.getElementById("script-preview");
   const scriptActions = document.getElementById("script-actions");
@@ -17,11 +17,11 @@
 
   function buildScript(tools) {
     const lines = [
-      "# Killercrow / kilrkrow one-shot installer",
+      "# Kilrkrow / kilrkrow one-shot installer",
       "# Run in elevated PowerShell (Run as administrator).",
       "# Prefers winget, then Chocolatey, then GitHub Release download.",
       "$ErrorActionPreference = 'Stop'",
-      "$Root = Join-Path $env:LOCALAPPDATA 'Killercrow\\apps'",
+      "$Root = Join-Path $env:LOCALAPPDATA 'Kilrkrow\\apps'",
       "New-Item -ItemType Directory -Force -Path $Root | Out-Null",
       "function Test-Admin { ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) }",
       "if (-not (Test-Admin)) { Write-Warning 'Not elevated — MSI/setup installs may prompt or fail. Re-run as Administrator for best results.' }",

@@ -1,4 +1,4 @@
-﻿window.KILLERCROW_CATALOG = [
+window.KILRKROW_CATALOG = [
   {
     id: "sideclip",
     name: "Sideclip",
