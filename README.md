@@ -1,12 +1,12 @@
-﻿# Killercrow tools hub
+# Kilrkrow tools hub
 
-Friendly discovery + install site for **kilrkrow** Windows utilities (spoken: *killercrow*).
+Friendly discovery + install site for **kilrkrow** Windows utilities (spoken: *kilrkrow*).
 
 ## What this is
 - Browse short tool cards and download release builds
 - One-button **Install selected** flow (elevated PowerShell) preferring **winget**, then **Chocolatey**, then direct GitHub Release download
 - Static site ready for GitHub Pages / Cloudflare Pages
-- Domains of interest: `killercrow.io`, `killercrow.dev` (appeared unregistered as of 2026-10-06 — not purchased here)
+- Domains of interest: `kilrkrow.io`, `kilrkrow.dev` (appeared unregistered as of 2026-10-06 — not purchased here)
 
 ## What this is not
 - Demo video clips for each app (separate later task)

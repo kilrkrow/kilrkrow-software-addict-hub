@@ -1,8 +1,8 @@
-﻿window.KILLERCROW_CATALOG = [
+window.KILRKROW_CATALOG = [
   {
     id: "sideclip",
     name: "Sideclip",
-    blurb: "Clipboard tray beside Win+V — secret TTL, picker, screenshot-path typer.",
+    blurb: "Clipboard tray beside Win+V - secret TTL, picker, screenshot-path typer.",
     repo: "https://github.com/kilrkrow/sideclip",
     tag: "v0.1.0",
     downloadUrl: "https://github.com/kilrkrow/sideclip/releases/download/v0.1.0/Sideclip-win-x64-v0.1.0.zip",
@@ -30,7 +30,8 @@
     downloadUrl: "https://github.com/kilrkrow/win-service-buddy/releases/download/v0.2.0/wsbuddy-app-win-x64-v0.2.0.zip",
     wingetId: null,
     chocoId: null,
-    installKind: "zip"
+    installKind: "zip",
+    screenshot: "https://raw.githubusercontent.com/kilrkrow/win-service-buddy/main/docs/screenshots/01-simple-mode.png"
   },
   {
     id: "audio-mixer",
@@ -41,6 +42,7 @@
     downloadUrl: "https://github.com/kilrkrow/audio-mixer/releases/download/v0.1.1/AudioMixer-win-x64-v0.1.1.zip",
     wingetId: null,
     chocoId: null,
-    installKind: "zip"
+    installKind: "zip",
+    screenshot: "https://raw.githubusercontent.com/kilrkrow/audio-mixer/main/docs/screenshots/modes.png"
   }
 ];
