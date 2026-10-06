@@ -1,4 +1,4 @@
-﻿window.KILLERCROW_CATALOG = [
+window.KILLERCROW_CATALOG = [
   {
     id: "sideclip",
     name: "Sideclip",
@@ -6,6 +6,17 @@
     repo: "https://github.com/kilrkrow/sideclip",
     tag: "v0.1.0",
     downloadUrl: "https://github.com/kilrkrow/sideclip/releases/download/v0.1.0/Sideclip-win-x64-v0.1.0.zip",
+    wingetId: null,
+    chocoId: null,
+    installKind: "zip"
+  },
+  {
+    id: "netpulse",
+    name: "NetPulse",
+    blurb: "Bare-bones network diagnostic — ping, traceroute, domain dossier.",
+    repo: "https://github.com/kilrkrow/netpulse",
+    tag: "v0.1.0",
+    downloadUrl: "https://github.com/kilrkrow/netpulse/releases/download/v0.1.0/NetPulse-win-x64-v0.1.0.zip",
     wingetId: null,
     chocoId: null,
     installKind: "zip"
@@ -19,7 +30,8 @@
     downloadUrl: "https://github.com/kilrkrow/voltdesk/releases/download/v1.0.2/VoltDesk.exe",
     wingetId: null,
     chocoId: "voltdesk",
-    installKind: "exe"
+    installKind: "exe",
+    note: "Latest tag v1.1.0 has empty assets[]; hub uses v1.0.2 which ships VoltDesk.exe"
   },
   {
     id: "win-service-buddy",
