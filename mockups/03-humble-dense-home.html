@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><title>03 Humble Dense Home</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Geist,Inter,system-ui,sans-serif;background:#f5f1ea;color:#2c2824}
+header{background:#eee9e0;padding:1rem 2rem;display:flex;align-items:center;gap:1rem}
+header strong{font-size:1.2rem}header .sub{color:#787064;font-size:.9rem}
+nav{margin-left:auto;display:flex;gap:1.25rem}nav a{color:#5a544c;text-decoration:none;font-size:.9rem}
+main{padding:1.5rem 2rem}h1{font-size:1.35rem;font-weight:550;margin-bottom:.35rem}
+.lead{color:#6e6860;margin-bottom:1.25rem;font-size:.95rem}
+table{width:100%;border-collapse:collapse;background:#faf7f1}
+th{background:#e4ded4;text-align:left;padding:.55rem .75rem;font-size:.75rem;color:#5a544c}
+td{padding:.85rem .75rem;border-bottom:1px solid #dcd6cc;font-size:.9rem}
+tr:nth-child(even) td{background:#f2ede4}
+.btn{background:#46423c;color:#f5f1ea;border:0;padding:.4rem .9rem;border-radius:4px;font-weight:600;cursor:pointer}
+foot{display:block;margin-top:1rem;color:#8c8478;font-size:.8rem}
+</style></head><body>
+<header><strong>kilrkrow</strong><span class="sub">software addict hub</span>
+<nav><a href="#">All</a><a href="#">Utilities</a><a href="#">About</a></nav></header>
+<main>
+<h1>Quiet shelf, denser catalog</h1>
+<p class="lead">Same humble neutrals — more columns, less scroll. Real releases only.</p>
+<table><thead><tr><th>Product</th><th>Pitch</th><th>Cat</th><th>Ver</th><th>Asset size</th><th></th></tr></thead>
+<tbody id="tb"></tbody></table>
+<foot>5 public Windows releases · catalog regenerated from GitHub · no Softpedia scrape</foot>
+</main>
+<script>
+const PRODUCTS = [
+  {name:"Audio Mixer", pitch:"Quick volume control for Windows", ver:"v0.1.1", cat:"Utilities", asset:"AudioMixer-win-x64-v0.1.1.zip", size:"70.8 MB", slug:"audio-mixer"},
+  {name:"Sideclip", pitch:"Tray clipboard beside Win+V with secret TTL", ver:"v0.1.0", cat:"Clipboard", asset:"Sideclip-win-x64-v0.1.0.zip", size:"66.7 MB", slug:"sideclip"},
+  {name:"VoltDesk", pitch:"Desk power & USB hub status at a glance", ver:"v0.2.3", cat:"Hardware", asset:"VoltDesk-win-x64-v0.2.3.zip", size:"41.2 MB", slug:"voltdesk"},
+  {name:"NetPulse", pitch:"Ping, traceroute, and domain dossier", ver:"v0.1.0", cat:"Network", asset:"NetPulse-win-x64-v0.1.0.zip", size:"64.2 MB", slug:"netpulse"},
+  {name:"Win Service Buddy", pitch:"Manage product-scoped Windows services", ver:"v0.2.0", cat:"Admin", asset:"wsbuddy-app-win-x64-v0.2.0.zip", size:"42.3 MB", slug:"win-service-buddy"},
+];
+
+PRODUCTS.forEach(p=>{document.getElementById('tb').innerHTML+=`<tr><td><b>${p.name}</b></td><td>${p.pitch}</td><td>${p.cat}</td><td>${p.ver}</td><td>${p.size}</td><td><button class="btn">Get ZIP</button></td></tr>`});
+</script></body></html>
