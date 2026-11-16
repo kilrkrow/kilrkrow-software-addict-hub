@@ -59,8 +59,8 @@ window.KILRKROW_CATALOG = [
     name: "Sift",
     blurb: "Light Windows event log viewer with Wireshark-style filtering.",
     repo: "https://github.com/kilrkrow/sift",
-    tag: "v0.1.0",
-    downloadUrl: "https://github.com/kilrkrow/sift/releases/download/v0.1.0/sift-v0.1.0-win64.zip",
+    tag: "v0.1.1",
+    downloadUrl: "https://github.com/kilrkrow/sift/releases/download/v0.1.1/sift-v0.1.1-win64.zip",
     wingetId: null,
     chocoId: null,
     installKind: "zip"
